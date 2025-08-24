@@ -1,15 +1,20 @@
-import CartApp from "./components/CartApp";
-import ChatApp from "./components/FakeWebSocket";
-import InfiniteUsers from "./components/InifiniteScroll";
-import UserTable from "./components/UserTable";
+import React from "react";
+import { AuthProvider } from "./contexts/AuthContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
 
-function App() {
+export default function App() {
   return (
-    <div className="max-w-4xl mx-auto mt-10">
-      <CartApp />
-      <div className="mt-5">{/* <ChatApp /> */}</div>
-    </div>
+    <ThemeProvider>
+      <AuthProvider>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-1 p-6">
+            <Dashboard />
+          </main>
+        </div>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
-
-export default App;
