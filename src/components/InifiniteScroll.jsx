@@ -25,7 +25,7 @@ export default function InfiniteUsers() {
   } = useInfiniteQuery({
     queryKey: ["infinite-users"],
     queryFn: fetchUsers,
-    getNextPageParam: (lastPage, allPages) => {
+    getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total_pages) {
         return lastPage.page + 1;
       }
